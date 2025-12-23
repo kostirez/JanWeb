@@ -1,0 +1,71 @@
+<div class="pacman-game-wrapper">
+  <h2>Pac-Man Clone</h2>
+
+  <div class="game-container">
+    <div class="score">Score: {{ score }}</div>
+
+    <!-- Character Selection -->
+    <div class="overlay" *ngIf="!characterSelected">
+      <h3>Choose Your Character</h3>
+      <div class="character-options">
+        <div class="option" (click)="selectCharacter('skin1')">
+          <img src="assets/player-yellow.png" alt="Yellow Player" class="character-preview">
+          <p>Tereza</p>
+        </div>
+        <div class="option" (click)="selectCharacter('skin2')">
+          <img src="assets/player-pink.png" alt="Pink Player" class="character-preview">
+          <p>Filip</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over / Win -->
+    <div class="overlay" *ngIf="gameOver">
+      <h3 *ngIf="gameWon">You Won!</h3>
+      <h3 *ngIf="!gameWon">Game Over</h3>
+      <p>Final Score: {{ score }}</p>
+      <button (click)="restart()">Play Again</button>
+    </div>
+
+    <!-- Maze Grid -->
+    <div class="maze-grid" [style.grid-template-columns]="'repeat(' + cols + ', 1fr)'">
+      <ng-container *ngFor="let row of maze; let r = index">
+        <div *ngFor="let cell of row; let c = index"
+             class="cell"
+             [ngClass]="{'wall': cell === 1, 'dot': cell === 0, 'empty': cell === 2}">
+             <img *ngIf="cell === 0" src="assets/food.png" alt="food" class="food-img">
+        </div>
+      </ng-container>
+
+      <!-- Player -->
+      <div class="player"
+           [style.left.%]="(player.x / cols) * 100"
+           [style.top.%]="(player.y / rows) * 100"
+           [style.width.%]="100 / cols"
+           [style.height.%]="100 / rows">
+           <img [src]="selectedSkin === 'skin1' ? 'assets/player-yellow.png' : 'assets/player-pink.png'" alt="player">
+      </div>
+
+      <!-- Enemies -->
+      <div *ngFor="let enemy of enemies"
+           class="enemy"
+           [style.left.%]="(enemy.x / cols) * 100"
+           [style.top.%]="(enemy.y / rows) * 100"
+           [style.width.%]="100 / cols"
+           [style.height.%]="100 / rows">
+      </div>
+    </div>
+  </div>
+
+  <!-- Touch Controls -->
+  <div class="controls">
+    <div class="control-row">
+      <div class="control-btn" (mousedown)="movePlayer(0, -1)" (touchstart)="$event.preventDefault(); movePlayer(0, -1)">↑</div>
+    </div>
+    <div class="control-row">
+      <div class="control-btn" (mousedown)="movePlayer(-1, 0)" (touchstart)="$event.preventDefault(); movePlayer(-1, 0)">←</div>
+      <div class="control-btn" (mousedown)="movePlayer(0, 1)" (touchstart)="$event.preventDefault(); movePlayer(0, 1)">↓</div>
+      <div class="control-btn" (mousedown)="movePlayer(1, 0)" (touchstart)="$event.preventDefault(); movePlayer(1, 0)">→</div>
+    </div>
+  </div>
+</div>

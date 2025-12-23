@@ -1,6 +1,15 @@
 <div class="main-container">
-  <h1>Kostohryz Jan</h1>
-  <app-game></app-game>
-</div>
+  <ng-container [ngSwitch]="layout">
 
-<router-outlet></router-outlet>
+    <div *ngSwitchCase="'terka'">
+      <h1>Svatební Pacman</h1>
+      <app-pacman></app-pacman>
+    </div>
+
+    <div *ngSwitchCase="'janko'">
+      <h1>Poukázka na web</h1>
+      <app-game></app-game>
+    </div>
+
+  </ng-container>
+</div>
