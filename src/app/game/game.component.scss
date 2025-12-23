@@ -1,0 +1,121 @@
+.game-container {
+  position: relative;
+  background-color: #333;
+  margin: 10px auto;
+  border: 4px solid #fff;
+  overflow: hidden;
+  cursor: crosshair;
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 4 / 3;
+  box-sizing: border-box;
+
+  .score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+    z-index: 10;
+  }
+
+  .character {
+    position: absolute;
+    background-color: #4caf50;
+    border-radius: 50% 50% 0 0;
+  }
+
+  .creature {
+    position: absolute;
+    background-color: #f44336;
+    border-radius: 5px;
+  }
+
+  .item {
+    position: absolute;
+    background-color: #ffeb3b;
+    border-radius: 50%;
+  }
+
+  .game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 20;
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+}
+
+.controls {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  user-select: none;
+  width: 100%;
+  max-width: 800px;
+
+  .control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #333;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      background-color: #ccc;
+    }
+
+    &.shoot-btn {
+      background-color: #ffeb3b;
+      border-color: #fbc02d;
+      width: 70px;
+      height: 70px;
+
+      &:active {
+        background-color: #fdd835;
+      }
+    }
+  }
+
+  @media (min-width: 600px) {
+    gap: 40px;
+
+    .control-btn {
+      width: 70px;
+      height: 70px;
+      font-size: 24px;
+
+      &.shoot-btn {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+}

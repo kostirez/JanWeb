@@ -1,0 +1,20 @@
+.main-container {
+  text-align: center;
+  padding: 10px;
+
+  h1 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .main-container {
+    padding: 20px;
+
+    h1 {
+      margin: 20px 0;
+      font-size: 2rem;
+    }
+  }
+}

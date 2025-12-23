@@ -1,0 +1,52 @@
+<div class="game-container">
+  <div class="score">Score: {{ score }}</div>
+
+  <div class="character"
+       [style.left.%]="(character.x / gameWidth) * 100"
+       [style.top.%]="(character.y / gameHeight) * 100"
+       [style.width.%]="(character.width / gameWidth) * 100"
+       [style.height.%]="(character.height / gameHeight) * 100">
+  </div>
+
+  @for (creature of creatures; track creature.id) {
+    <div class="creature"
+         [style.left.%]="(creature.x / gameWidth) * 100"
+         [style.top.%]="(creature.y / gameHeight) * 100"
+         [style.width.%]="(creature.width / gameWidth) * 100"
+         [style.height.%]="(creature.height / gameHeight) * 100">
+    </div>
+  }
+
+  @for (item of items; track item.id) {
+    <div class="item"
+         [style.left.%]="(item.x / gameWidth) * 100"
+         [style.top.%]="(item.y / gameHeight) * 100"
+         [style.width.%]="(item.width / gameWidth) * 100"
+         [style.height.%]="(item.height / gameHeight) * 100">
+    </div>
+  }
+
+  @if (gameOver) {
+    <div class="game-over">
+      <h1>Game Over!</h1>
+      <p>Final Score: {{ score }}</p>
+      <button (click)="startGame()">Play Again</button>
+    </div>
+  }
+</div>
+
+<div class="controls">
+  <button class="control-btn"
+          (mousedown)="startMoveLeft()" (mouseup)="stopMoveLeft()" (mouseleave)="stopMoveLeft()"
+          (touchstart)="startMoveLeft(); $event.preventDefault()" (touchend)="stopMoveLeft(); $event.preventDefault()">
+    &larr;
+  </button>
+  <button class="control-btn shoot-btn" (click)="throwItem()" (touchstart)="throwItem(); $event.preventDefault()">
+    Shoot
+  </button>
+  <button class="control-btn"
+          (mousedown)="startMoveRight()" (mouseup)="stopMoveRight()" (mouseleave)="stopMoveRight()"
+          (touchstart)="startMoveRight(); $event.preventDefault()" (touchend)="stopMoveRight(); $event.preventDefault()">
+    &rarr;
+  </button>
+</div>
