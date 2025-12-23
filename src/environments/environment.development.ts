@@ -1,3 +1,3 @@
 export const environment = {
-  gameMode: 'terka'
+  gameMode: 'janko'
 };
