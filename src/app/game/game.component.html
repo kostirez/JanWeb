@@ -1,5 +1,5 @@
 <div class="game-container">
-  <div class="score">Score: {{ score }}</div>
+  <div class="score">Skóre: {{ score }}</div>
 
   <div class="character"
        [style.left.%]="(character.x / gameWidth) * 100"
@@ -28,9 +28,9 @@
 
   @if (gameOver) {
     <div class="game-over">
-      <h1>Game Over!</h1>
-      <p>Final Score: {{ score }}</p>
-      <button (click)="startGame()">Play Again</button>
+      <h1>Prohrál si!</h1>
+      <p>Skóre: {{ score }}</p>
+      <button (click)="startGame()">Hrát znovu</button>
     </div>
   }
 </div>

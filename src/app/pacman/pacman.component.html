@@ -1,12 +1,11 @@
 <div class="pacman-game-wrapper">
-  <h2>Pac-Man Clone</h2>
 
   <div class="game-container">
     <div class="score">Score: {{ score }}</div>
 
     <!-- Character Selection -->
     <div class="overlay" *ngIf="!characterSelected">
-      <h3>Choose Your Character</h3>
+      <h3>Vyber si postavu</h3>
       <div class="character-options">
         <div class="option" (click)="selectCharacter('skin1')">
           <img src="assets/player-yellow.png" alt="Yellow Player" class="character-preview">
@@ -21,10 +20,10 @@
 
     <!-- Game Over / Win -->
     <div class="overlay" *ngIf="gameOver">
-      <h3 *ngIf="gameWon">You Won!</h3>
-      <h3 *ngIf="!gameWon">Game Over</h3>
-      <p>Final Score: {{ score }}</p>
-      <button (click)="restart()">Play Again</button>
+      <h3 *ngIf="gameWon">Vyhrál jsi!</h3>
+      <h3 *ngIf="!gameWon">Prohrál si</h3>
+      <p>Skóre: {{ score }}</p>
+      <button (click)="restart()">Hrát znovu</button>
     </div>
 
     <!-- Maze Grid -->
